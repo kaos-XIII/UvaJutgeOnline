@@ -1,13 +1,16 @@
 all:
 
 	clear
-	g++ 100_v1.c -o 100_v1 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
+	g++ p100.c -o p100 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
 
 remove:
 
-	rm 100_v1
+	rm p100
 
 run:
 
-	./100_v1 < inputs.txt
+	./p100 < inputsOriginal.txt
 
+run2:
+
+	./p100 < inputs2.txt
