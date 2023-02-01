@@ -5,4 +5,5 @@
 ## My Times
 
 Verdict	    Lang	Time	Best	Rank	Submit Time
+
 Accepted	C++	    0.210	0.000	12728	2016-10-15 19:41
