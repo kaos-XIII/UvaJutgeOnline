@@ -1,6 +1,6 @@
 # UvaJutgeOnline
 
-## Problem of UvaJutgeOnline
+## Problems of UvaJutgeOnline
 
 https://uva.onlinejudge.org/
 
