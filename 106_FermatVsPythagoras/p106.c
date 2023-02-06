@@ -10,9 +10,14 @@
 #include <cmath>
 using namespace std;
 
+unsigned long maximo_comun_divisor(unsigned long a, unsigned long b) {
+    if (b == 0) return a;
+    return maximo_comun_divisor_recursivo(b, a % b);
+}
+
 int main() 
 {
-	int long N = 0;
+	unsigned long N = 0;
 
 	while ( scanf ("%i", &N) != EOF ) 
 	{
