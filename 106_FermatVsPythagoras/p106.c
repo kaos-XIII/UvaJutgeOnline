@@ -14,12 +14,17 @@ int main()
 {
 	int long N = 0;
 
-	while ( scanf ("%i %i %i", &N) != EOF ) 
+	while ( scanf ("%i", &N) != EOF ) 
 	{
+		int long p = 2;
+		int long nTripleta = 0;
+		int long x = 3, y = 4, z = 5; // ??? 
 
+
+
+		//// Print
+		cout << nTripleta << " " << p;
 	}
 	
-	//// Print
-
   	return(0);
 }
