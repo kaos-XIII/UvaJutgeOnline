@@ -10,9 +10,12 @@
 #include <cmath>
 using namespace std;
 
-unsigned long maximo_comun_divisor(unsigned long a, unsigned long b) {
+#define DEBUG
+
+unsigned long maximo_comun_divisor(unsigned long a, unsigned long b) 
+{
     if (b == 0) return a;
-    return maximo_comun_divisor_recursivo(b, a % b);
+    return maximo_comun_divisor(b, a % b);
 }
 
 int main() 
@@ -21,15 +24,42 @@ int main()
 
 	while ( scanf ("%i", &N) != EOF ) 
 	{
-		int long p = 2;
-		int long nTripleta = 0;
-		int long x = 3, y = 4, z = 5; // ??? 
+		char numberUsed[N+1];
+		unsigned long p = N;
+		unsigned long nTripletaGood = 0;
+		unsigned long x = 3, y = 4, z = 5;
+		memset(numberUsed, 0, sizeof(numberUsed));
+		
+		for (x = 3; x < N; x++)
+		{
+			for (y = x+1; y < N; y++)
+			{	
+				z = sqrt( (x*x)+(y*y) );
 
+				if ( (z <= N) && ( (x*x) + (y*y) == (z*z) ) )
+				{
+					
+					if ( ((x+1 == y) || (maximo_comun_divisor(x, y) == 1)) && 
+					(maximo_comun_divisor(x, z) == 1) && 
+					((y+1 == z) || (maximo_comun_divisor(y, z) == 1)) )
+					{
+						++nTripletaGood;
+						cout << "	Para N("<<N<<")->Tripleta valida(Prima): " << x << " " << y << " " << z << "\n";
+					}
+					else cout << "	Para N("<<N<<")->Tripleta valida: " << x << " " << y << " " << z << "\n";
 
-
+					if (numberUsed[x] == 0) p = --p;
+					if (numberUsed[y] == 0) p = --p;
+					if (numberUsed[z] == 0) p = --p;
+					
+					numberUsed[x] = 1;	
+					numberUsed[y] = 1;
+					numberUsed[z] = 1;
+				}
+			}
+		}		
 		//// Print
-		cout << nTripleta << " " << p;
+		cout << nTripletaGood << " " << p << "\n";
 	}
-	
   	return(0);
 }
