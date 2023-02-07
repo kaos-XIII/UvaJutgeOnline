@@ -10,7 +10,7 @@
 #include <cmath>
 using namespace std;
 
-#define DEBUG
+//#define DEBUG
 
 unsigned long maximo_comun_divisor(unsigned long a, unsigned long b) 
 {
@@ -38,7 +38,6 @@ int main()
 
 				if ( (z <= N) && ( (x*x) + (y*y) == (z*z) ) )
 				{
-					
 					if ( ((x+1 == y) || (maximo_comun_divisor(x, y) == 1)) && 
 					(maximo_comun_divisor(x, z) == 1) && 
 					((y+1 == z) || (maximo_comun_divisor(y, z) == 1)) )
