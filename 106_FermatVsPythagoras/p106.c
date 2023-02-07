@@ -10,7 +10,7 @@
 #include <cmath>
 using namespace std;
 
-//#define DEBUG
+#define DEBUG
 
 unsigned long maximo_comun_divisor(unsigned long a, unsigned long b) 
 {
@@ -24,18 +24,20 @@ int main()
 
 	while ( scanf ("%i", &N) != EOF ) 
 	{
-		char numberUsed[N+1];
+		//char numberUsed[N+1];
+		bool *numberUsed = new bool[N+1];
 		unsigned long p = N;
 		unsigned long nTripletaGood = 0;
 		unsigned long x = 3, y = 4, z = 5;
-		memset(numberUsed, 0, sizeof(numberUsed));
+		memset(numberUsed, false, sizeof(numberUsed));
 		
-		for (x = 3; (x*x) < ( (N*N)-( (x+1)*(x+1) ) ); x++)
+		for (x = 1; (x*x) < ( (N*N)-( (x+1)*(x+1) ) ); x++)
 		{
 			for (y = x+1; (y*y) < ( (N*N)-( (3)*(3) ) ) ; y++)
 			{	
 				z = sqrt( (x*x)+(y*y) );
-
+				//z = (x*x)+(y*y);
+				if (z > N) break;
 				if ( (z <= N) && ( (x*x) + (y*y) == (z*z) ) )
 				{
 					if ( ((x+1 == y) || (maximo_comun_divisor(x, y) == 1)) && 
@@ -50,14 +52,14 @@ int main()
 #else
 					}
 #endif
-					if (numberUsed[x] == 0) p = --p;
-					if (numberUsed[y] == 0) p = --p;
-					if (numberUsed[z] == 0) p = --p;
+					if (*(numberUsed+x) == false) p = --p;
+					if (*(numberUsed+y) == false) p = --p;
+					if (*(numberUsed+z) == false) p = --p;
 					
-					numberUsed[x] = 1;	
-					numberUsed[y] = 1;
-					numberUsed[z] = 1;
-				}
+					*(numberUsed+x) = true;
+					*(numberUsed+y) = true;
+					*(numberUsed+z) = true;
+				}				
 			}
 		}		
 		//// Print
