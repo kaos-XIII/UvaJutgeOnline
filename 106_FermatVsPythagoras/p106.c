@@ -30,9 +30,9 @@ int main()
 		unsigned long x = 3, y = 4, z = 5;
 		memset(numberUsed, 0, sizeof(numberUsed));
 		
-		for (x = 3; x < N; x++)
+		for (x = 3; (x*x) < ( (N*N)-( (x+1)*(x+1) ) ); x++)
 		{
-			for (y = x+1; y < N; y++)
+			for (y = x+1; (y*y) < ( (N*N)-( (3)*(3) ) ) ; y++)
 			{	
 				z = sqrt( (x*x)+(y*y) );
 
@@ -44,10 +44,13 @@ int main()
 					((y+1 == z) || (maximo_comun_divisor(y, z) == 1)) )
 					{
 						++nTripletaGood;
+#ifdef DEBUG			
 						cout << "	Para N("<<N<<")->Tripleta valida(Prima): " << x << " " << y << " " << z << "\n";
 					}
-					else cout << "	Para N("<<N<<")->Tripleta valida: " << x << " " << y << " " << z << "\n";
-
+					else cout << "	Para N("<<N<<")->Tripleta valida:        " << x << " " << y << " " << z << "\n";
+#else
+					}
+#endif
 					if (numberUsed[x] == 0) p = --p;
 					if (numberUsed[y] == 0) p = --p;
 					if (numberUsed[z] == 0) p = --p;
