@@ -31,37 +31,6 @@ int main()
 		unsigned long x = 3, y = 4, z = 5;
 		memset(numberUsed, false, sizeof(numberUsed));
 		
-		for (x = 1; (x*x) < ( (N*N)-( (x+1)*(x+1) ) ); x++)
-		{
-			for (y = x+1; (y*y) < ( (N*N)-( (3)*(3) ) ) ; y++)
-			{	
-				z = sqrt( (x*x)+(y*y) );
-				//z = (x*x)+(y*y);
-				if (z > N) break;
-				if ( (z <= N) && ( (x*x) + (y*y) == (z*z) ) )
-				{
-					if ( ((x+1 == y) || (maximo_comun_divisor(x, y) == 1)) && 
-					(maximo_comun_divisor(x, z) == 1) && 
-					((y+1 == z) || (maximo_comun_divisor(y, z) == 1)) )
-					{
-						++nTripletaGood;
-#ifdef DEBUG			
-						cout << "	Para N("<<N<<")->Tripleta valida(Prima): " << x << " " << y << " " << z << "\n";
-					}
-					else cout << "	Para N("<<N<<")->Tripleta valida:        " << x << " " << y << " " << z << "\n";
-#else
-					}
-#endif
-					if (*(numberUsed+x) == false) p = --p;
-					if (*(numberUsed+y) == false) p = --p;
-					if (*(numberUsed+z) == false) p = --p;
-					
-					*(numberUsed+x) = true;
-					*(numberUsed+y) = true;
-					*(numberUsed+z) = true;
-				}				
-			}
-		}		
 		//// Print
 		cout << nTripletaGood << " " << p << "\n";
 	}
