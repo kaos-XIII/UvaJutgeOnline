@@ -13,6 +13,7 @@ AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: 'false'
 BinPackArguments: 'true'
 BinPackParameters: 'true'
+BreakBeforeBraces: Stroustrup #########
 ColumnLimit: '1000'
 IndentCaseLabels: 'true'
 IndentPPDirectives: AfterHash
@@ -27,4 +28,17 @@ SpacesBeforeTrailingComments: 1
 TabWidth: '4'
 UseTab: Never
 
+#BraceWrapping:
+#  AfterClass:      true
+#  AfterControlStatement: true
+#  AfterEnum:       true/false
+#  AfterFunction:   true
+#  AfterNamespace:  true/false
+#  AfterObjCDeclaration: true/false
+#  AfterStruct:     true/false
+#  AfterUnion:      true/false
+#  BeforeCatch:     true/false
+#  BeforeElse:      true/false
+#  IndentBraces:    true/false
+#BreakBeforeBraces: Custom
 ...
