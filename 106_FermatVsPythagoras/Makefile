@@ -1,7 +1,7 @@
 all:
 
 	clear
-	g++ p106.c -o p106 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
+	g++ p106.cpp -o p106 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
 
 remove:
 

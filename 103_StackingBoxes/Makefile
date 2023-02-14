@@ -5,7 +5,7 @@ all:
 v1:
 
 	clear
-	g++ p103.c -o p103 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
+	g++ p103.cpp -o p103 -lm -lcrypt -O2 -pipe -DONLINE_JUDGE
 
 remove:
 
