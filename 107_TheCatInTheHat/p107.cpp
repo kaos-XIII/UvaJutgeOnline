@@ -8,23 +8,79 @@
 #include <cstdio>
 #include <cstring>
 #include <cmath>
+//#include <stdlib.h>     //for using the function sleep
+#include <unistd.h>
 using namespace std;
 
 #define DEBUG
 
-int main() 
+int main()
 {
-	unsigned long height = 0;
-	unsigned long nCats = 0;
-	unsigned long catsNotWorking = 0;
-	unsigned long stackOfCats = 0;
+	unsigned long heightInitialCat = 0;
+	unsigned long nCatsWorking = 0;
 
-	while ( scanf ("%i %i", &height, &nCats) != EOF ) 
+
+	while ( scanf ("%i %i", &heightInitialCat, &nCatsWorking) != EOF )
 	{
-		if((height == 0) && (nCats == 0)) break;
+		if((heightInitialCat == 0) && (nCatsWorking == 0)) break;
 
+        unsigned long nCatsNotWorking = 0;
+        unsigned long stackOfCats = nCatsWorking;
+
+        bool resultOk = false;
+        unsigned long N = 2;
+
+        unsigned long beforeHeight = heightInitialCat;
+
+        unsigned long copy_nCatsWorking = nCatsWorking;
+
+        /*
+        Caso especial en que nCatsWorking == 1
+        */
+        if (nCatsWorking == 1)
+        {
+            unsigned long actualHeight = heightInitialCat;
+            N = 1;
+
+            while (actualHeight != 1)
+            {
+                //cout << "actualHeight: " << actualHeight << "\n";
+                stackOfCats = stackOfCats + actualHeight;
+                actualHeight = ( actualHeight / (N+1) );
+                //if ( actualHeight != 1 )
+                nCatsNotWorking++;
+                //sleep(1);
+            }
+            resultOk = true;
+        }
+        /*
+        Resto de casos
+        */
+        while (!resultOk)
+        {
+            if( ( (copy_nCatsWorking % N) == 0) && ( (copy_nCatsWorking / N) != 1) )
+            {
+                copy_nCatsWorking = copy_nCatsWorking / N;
+
+                nCatsNotWorking = nCatsNotWorking + copy_nCatsWorking;
+
+            }
+            else if ( ( (copy_nCatsWorking % N) == 0 ) && ( (copy_nCatsWorking / N) == 1) )
+            {
+                resultOk = true;
+            }
+            else
+            {
+                N++;
+                nCatsNotWorking = 1;
+                stackOfCats = heightInitialCat;
+                beforeHeight = heightInitialCat;
+                copy_nCatsWorking = nCatsWorking;
+            }
+        }
+        cout << "N encontrada: " << N << ", Para heightInitialCat: " << heightInitialCat << " y nCatsWorking: " << nCatsWorking << "\n";
 		//// Print
-		cout << catsNotWorking << " " << stackOfCats << "\n";
+		cout << nCatsNotWorking << " " << stackOfCats << "\n";
 	}
   	return(0);
 }
