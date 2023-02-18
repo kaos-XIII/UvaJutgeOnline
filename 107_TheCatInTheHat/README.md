@@ -6,4 +6,4 @@
 
 | Verdict | Lang | Time | Best | Rank | Submit Time |
 | --- | --- | --- | --- | --- | --- |
-| Accepted | C++ | X | X | 0.000 | X | X |
+| Accepted | C++ | 0.070 | 0.000 | 910 | 2023-02-18 15:15 |

@@ -30,7 +30,7 @@ int main()
         bool resultOk = false;
         unsigned long N = 2;
 
-        unsigned long beforeHeight = heightInitialCat;
+        unsigned long actualHeight = 1;
 
         unsigned long copy_nCatsWorking = nCatsWorking;
 
@@ -61,24 +61,29 @@ int main()
             if( ( (copy_nCatsWorking % N) == 0) && ( (copy_nCatsWorking / N) != 1) )
             {
                 copy_nCatsWorking = copy_nCatsWorking / N;
-
                 nCatsNotWorking = nCatsNotWorking + copy_nCatsWorking;
+                actualHeight = actualHeight * (N + 1);
+                stackOfCats = stackOfCats + (actualHeight * copy_nCatsWorking);
+                //cout << "actualHeight: " << actualHeight << "\n";
+                //cout << "stackOfCats: " << actualHeight << "\n";
 
             }
-            else if ( ( (copy_nCatsWorking % N) == 0 ) && ( (copy_nCatsWorking / N) == 1) )
+            else if ( ( (copy_nCatsWorking % N) == 0 ) && ( (copy_nCatsWorking / N) == 1) && ((actualHeight * (N + 1)) == heightInitialCat) )
             {
+                stackOfCats = stackOfCats + heightInitialCat;
+                ++nCatsNotWorking;
                 resultOk = true;
             }
             else
             {
                 N++;
-                nCatsNotWorking = 1;
-                stackOfCats = heightInitialCat;
-                beforeHeight = heightInitialCat;
+                nCatsNotWorking = 0;
+                stackOfCats = nCatsWorking;
+                actualHeight = 1;
                 copy_nCatsWorking = nCatsWorking;
             }
         }
-        cout << "N encontrada: " << N << ", Para heightInitialCat: " << heightInitialCat << " y nCatsWorking: " << nCatsWorking << "\n";
+        //cout << "N encontrada: " << N << ", Para heightInitialCat: " << heightInitialCat << " y nCatsWorking: " << nCatsWorking << "\n";
 		//// Print
 		cout << nCatsNotWorking << " " << stackOfCats << "\n";
 	}
