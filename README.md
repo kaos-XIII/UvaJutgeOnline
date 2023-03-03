@@ -1,5 +1,7 @@
 # UvaJutgeOnline
 
+[![Latest Release](https://img.shields.io/github/v/release/kaos-XIII/UvaJutgeOnline?color=3D87CE&label=Latest&sort=semver&style=for-the-badge)](https://github.com/qmk/qmk_distro_msys/releases/latest)
+
 Branching: OneFlow
 
 ## Problems of UvaJutgeOnline
